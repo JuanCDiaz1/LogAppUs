@@ -123,7 +123,32 @@ body {
     box-shadow: 0px 4px 15px 0px #373837a6;
     background-image: linear-gradient(135deg, #ffff00e5 10%, #ffff00e5 100%);
   }
-  
+  .box-form .left button {
+    float: right;
+    color: rgb(16, 14, 14);
+    font-size: 16px;
+    padding: 12px 35px;
+    border-radius: 50px;
+    display: inline-block;
+    border: 0;
+    outline: 0;
+    box-shadow: 0px 4px 15px 0px #373837a6;
+    background-image: linear-gradient(135deg, #3e3c3ce5 10%, #111111e5 100%);
+  }
+  form .btn-sec {
+    outline: none;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    margin: 0 auto;
+    padding: 0.9rem 2.5rem;
+    text-align: center;
+    background-color: #fa824b;
+    color: #fff;
+    border-radius: 4px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+    font-size: 17px;
+}
   
   label {
     display: block;

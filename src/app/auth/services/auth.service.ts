@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import {  ArgumentOutOfRangeError, catchError, map, of, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { AuthResponse } from '../interfaces/res-interface';
 import { user } from '../interfaces/us-interface';
 
 @Injectable({
@@ -20,11 +22,41 @@ export class AuthService {
 register(usname:string, id:string, pass:string){
   const URL = `${this.baseUrl}/auth/new`;
   const body = {usname, id, pass};
+  return this.http.post<AuthResponse>(URL,body)
+  .pipe(
+    tap(res =>{
+      console.log(res);
+      if(res.ok){
+        localStorage.setItem('token', res.token!);
+        this._user={
+          id:res.id!,
+          usname: res.usname!
+        }
+      }
+    }),
+    map(res=>res.ok),
+    catchError(err=>of(err.error.message))
+  )
 }
 
 login(id: string, pass:string){
   const URL = `${this.baseUrl}/auth`;
   const body = {id, pass};
+  return this.http.post<AuthResponse>(URL,body)
+  .pipe(
+    tap(res =>{
+      console.log(res);
+      if(res.ok){
+        localStorage.setItem('token', res.token!);
+        this._user={
+          id:res.id!,
+          usname: res.usname!
+        }
+      }
+    }),
+    map(res=>res.ok),
+    catchError(err=>of(err.error.message))
+  )
 }
 validateToken(){
   
