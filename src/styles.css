@@ -113,7 +113,7 @@ body {
   }
   .box-form .right button {
     float: right;
-    color: #fff;
+    color: rgb(76, 74, 74);
     font-size: 16px;
     padding: 12px 35px;
     border-radius: 50px;
@@ -121,7 +121,7 @@ body {
     border: 0;
     outline: 0;
     box-shadow: 0px 4px 20px 0px #373837a6;
-    background-image: linear-gradient(135deg, #3d3d3d 10%, #7a7c79 100%);
+    background-image: linear-gradient(135deg, #ffff00e5 10%, #ffff00e5 100%);
   }
   
   label {
