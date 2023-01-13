@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../services/auth.service';
@@ -11,11 +11,11 @@ import { AuthService } from '../../services/auth.service';
 })
 export class LoginComponent  {
 
-  formularioLog: FormGroup = this.fb.group({
+  formularioLog: UntypedFormGroup = this.fb.group({
 id:['', [Validators.required, Validators.minLength(8)]],
 pass:['',[Validators.required, Validators.minLength(7)] ]
   })
-  constructor(private fb: FormBuilder,
+  constructor(private fb: UntypedFormBuilder,
     private router: Router,
     private authService: AuthService,
     private toastr: ToastrService) {}

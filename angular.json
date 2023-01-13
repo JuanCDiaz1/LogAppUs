@@ -103,5 +103,7 @@
       }
     }
   },
-  "defaultProject": "LogAppUs"
+  "cli": {
+    "analytics": false
+  }
 }
