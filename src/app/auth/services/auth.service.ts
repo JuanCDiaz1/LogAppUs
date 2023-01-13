@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {  ArgumentOutOfRangeError, catchError, map, of, tap } from 'rxjs';
+import {  ArgumentOutOfRangeError, catchError, map, Observable, of, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AuthResponse } from '../interfaces/res-interface';
 import { user } from '../interfaces/us-interface';
@@ -58,7 +58,24 @@ login(id: string, pass:string){
     catchError(err=>of(err.error.message))
   )
 }
-validateToken(){
-  
+validateToken(): Observable<boolean>{
+  const url = `${this.baseUrl}/auth/renew`;
+  const headers = new HttpHeaders()
+  .set('apikey', localStorage.getItem('token')||''); 
+
+  return this.http.get<AuthResponse>(url, {headers})
+  .pipe(
+    map(res=>{
+      localStorage.setItem('token', res.token!);
+      this._user={
+        id: res.id!,
+        usname: res.usname!,
+      }
+      return res.ok;
+
+      }
+   ), catchError(err=>of(false))
+
+  )
 }
 }
