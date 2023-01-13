@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -16,12 +17,21 @@ pass:['',[Validators.required, Validators.minLength(7)] ]
   })
   constructor(private fb: FormBuilder,
     private router: Router,
-    private authService: AuthService) { }
+    private authService: AuthService,
+    private toastr: ToastrService) {}
 
 login(){
-  console.log(this.formularioLog.value);
+  /*console.log(this.formularioLog.value);
   console.log(this.formularioLog.valid);
-  this.router.navigateByUrl('/dashboard');
-}
+  this.router.navigateByUrl('/dashboard');*/
 
+  if(this.formularioLog.valid){
+    const {id, pass} = this.formularioLog.value;
+
+  }
+  else{
+  this.toastr.error('Verifique sus datos.', 'Error')
+    }
+  
+}
 }
