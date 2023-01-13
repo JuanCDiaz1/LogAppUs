@@ -1,1 +1,35 @@
-<p>login works!</p>
+<!-- partial:index.partial.html -->
+<div class="box-form">
+	<div class="left">
+		<div class="overlay">
+		<h1>Hola.&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;    </h1>
+	<!--html><p>Inicia sesión en tu cuenta</p>
+		<span>
+			<p>login with social media</p>
+			<a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+			<a href="#"><i class="fa fa-twitter" aria-hidden="true"></i> Login with Twitter</a>
+		</span></html-->
+
+		</div>
+	</div>
+	
+	
+		<div class="right">
+		<h5>Login</h5>
+		
+ <form [formGroup]= "formularioLog"(ngSubmit)="login()">
+		<div class="inputs">
+			<input placeholder="ID" formControlName="id" required/>
+			<br>
+			<input type="password" placeholder="Password" formControlName="pass" required/> 
+		</div>
+			<br><br> 
+				<!-- Angular --> 		
+			<br>
+			<button class="right button" type="submit" [disabled]="formularioLog.invalid"> Login </button>
+			<br><br><br>
+			<p>No tienes cuenta?<button class="right button" routerLink="auth/register"> Crea una</button>
+			
+ </form>
+</div>     
+<!-- partial -->     
