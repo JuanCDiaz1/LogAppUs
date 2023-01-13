@@ -78,4 +78,7 @@ validateToken(): Observable<boolean>{
 
   )
 }
+logOut(){
+  localStorage.clear();
+}
 }
